@@ -9,6 +9,8 @@ def main():
 
         # Wait for user input
         command = input()
+        if command == "exit 0":
+            break
         sys.stdout.write(f"{command}: command not found\n")
 
 
