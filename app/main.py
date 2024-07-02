@@ -36,7 +36,7 @@ def main():
                         break
                 else:
                     sys.stdout.write(f"{args[1]}: not found\n")
-        elif flag:
+        elif not flag:
             sys.stdout.write(f"{command}: command not found\n")
 
 
