@@ -12,7 +12,6 @@ def main():
 
         # Wait for user input
         paths = os.environ.get('PATH').split(':')
-        print(paths)
         command = input()
         args = command.split()
         if args[0] == "exit":
@@ -25,7 +24,7 @@ def main():
                 sys.stdout.write(f"{args[1]} is a shell builtin\n")
             else:
                 for path in paths:
-                    if args[1] in os.listdir(path):
+                    if os.path.isdir(path) and args[1] in os.listdir(path):
                         sys.stdout.write(f"{args[1]} is {path}\n")
                         break
                 else:
