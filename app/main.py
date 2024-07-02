@@ -13,6 +13,7 @@ def main():
         # Wait for user input
         paths = os.environ.get('PATH').split(':')
         command = input()
+        print(paths)
         args = command.split()
         if args[0] in paths:
             os.system(command)
