@@ -43,7 +43,7 @@ def main():
                             break
                     else:
                         sys.stdout.write(f"{args[1]}: not found\n")
-            case '-':
+            case _:
                 for path in paths:
                     if os.path.isdir(path) and args[0] in os.listdir(path):
                         os.system(command)
