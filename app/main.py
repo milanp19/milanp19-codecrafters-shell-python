@@ -11,7 +11,7 @@ def main():
         known_commands = ["exit", "echo", "type"]
 
         # Wait for user input
-        paths = sys.argv[1][5:].split(':')
+        paths = sys.argv[0][5:].split(':')
         
         command = input()
         args = command.split()
