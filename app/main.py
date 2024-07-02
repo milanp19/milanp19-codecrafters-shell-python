@@ -14,13 +14,7 @@ def main():
         paths = os.environ.get('PATH').split(':')
         command = input()
         # print(paths)
-        flag = False
         args = command.split()
-        for path in paths:
-            if os.path.isdir(path) and args[0] in os.listdir(path):
-                flag = True
-                os.system(command)
-                break
         if args[0] == "exit":
             if args[1] == "0":
                 break
@@ -36,8 +30,13 @@ def main():
                         break
                 else:
                     sys.stdout.write(f"{args[1]}: not found\n")
-        elif not flag:
-            sys.stdout.write(f"{command}: command not found\n")
+        else:
+            for path in paths:
+                if os.path.isdir(path) and args[0] in os.listdir(path):
+                    os.system(command)
+                    break
+            else:
+                sys.stdout.write(f"{command}: command not found\n")
 
 
 if __name__ == "__main__":
