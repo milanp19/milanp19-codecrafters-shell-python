@@ -13,9 +13,10 @@ def main():
         # Wait for user input
         paths = os.environ.get('PATH').split(':')
         command = input()
+        home_path = os.environ.get('HOME')
         # print(paths)
         args = command.split()
-        
+
         if args[0] == "exit":
             if args[1] == "0":
                 break
@@ -25,7 +26,10 @@ def main():
             sys.stdout.write(os.getcwd() + '\n')
         elif args[0] == "cd":
             try:
-                os.chdir(args[1])
+                path = args[1]
+                if args[1] == '~':
+                    path = home_path
+                os.chdir(path)
             except:
                 sys.stdout.write(f"cd: {args[1]}: No such file or directory\n")
         elif args[0] == "type":
