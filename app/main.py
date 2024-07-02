@@ -25,7 +25,7 @@ def main():
             else:
                 for path in paths:
                     if os.path.isdir(path) and args[1] in os.listdir(path):
-                        sys.stdout.write(f"{args[1]} is {path}\n")
+                        sys.stdout.write(f"{args[1]} is {path}/{args[1]}\n")
                         break
                 else:
                     sys.stdout.write(f"{args[1]}: not found\n")
