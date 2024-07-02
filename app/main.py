@@ -15,6 +15,7 @@ def main():
         command = input()
         # print(paths)
         args = command.split()
+        
         if args[0] == "exit":
             if args[1] == "0":
                 break
