@@ -13,11 +13,12 @@ def main():
         # Wait for user input
         paths = os.environ.get('PATH').split(':')
         command = input()
-        print(paths)
+        # print(paths)
         args = command.split()
-        if args[0] in paths:
-            os.system(command)
-        elif args[0] == "exit":
+        for path in paths:
+            if os.path.isdir(path) and args[0] in os.listdir(path):
+                os.system(command)
+        if args[0] == "exit":
             if args[1] == "0":
                 break
         elif args[0] == "echo":
