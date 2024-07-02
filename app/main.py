@@ -8,7 +8,7 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
 
-        known_commands = ["exit", "echo", "type", "pwd"]
+        known_commands = ["exit", "echo", "type", "pwd", "cd"]
 
         # Wait for user input
         paths = os.environ.get('PATH').split(':')
@@ -22,6 +22,11 @@ def main():
             sys.stdout.write(" ".join(args[1:]) + "\n")
         elif args[0] == "pwd":
             sys.stdout.write(os.getcwd() + '\n')
+        elif args[0] == "cd":
+            try:
+                os.chdir(args[1])
+            except:
+                sys.stdout.write(f"cd: {args[1]}: No such file or directory")
         elif args[0] == "type":
             if args[1] in known_commands:
                 sys.stdout.write(f"{args[1]} is a shell builtin\n")
