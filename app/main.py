@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 def main():
@@ -10,6 +11,8 @@ def main():
         known_commands = ["exit", "echo", "type"]
 
         # Wait for user input
+        paths = sys.argv[1][5:].split(':')
+        
         command = input()
         args = command.split()
         if args[0] == "exit":
@@ -21,7 +24,12 @@ def main():
             if args[1] in known_commands:
                 sys.stdout.write(f"{args[1]} is a shell builtin\n")
             else:
-                sys.stdout.write(f"{args[1]}: not found\n")
+                for path in paths:
+                    if args[1] in os.listdir(path):
+                        sys.stdout.write(f"{args[1]} is {path}\n")
+                        break
+                else:
+                    sys.stdout.write(f"{args[1]}: not found\n")
         else:
             sys.stdout.write(f"{command}: command not found\n")
 
