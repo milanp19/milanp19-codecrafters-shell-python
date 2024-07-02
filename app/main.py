@@ -14,7 +14,9 @@ def main():
         paths = os.environ.get('PATH').split(':')
         command = input()
         args = command.split()
-        if args[0] == "exit":
+        if args[0] in paths:
+            os.system(command)
+        elif args[0] == "exit":
             if args[1] == "0":
                 break
         elif args[0] == "echo":
